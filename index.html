@@ -16,70 +16,119 @@
 
   <style>
     :root{
-      --bg:#0b0c10; --panel:#121318; --muted:#9aa0a6; --text:#ebeff3;
-      --gold:#c9a449; --gold-2:#e6c66d; --accent:#1f6feb;
-      --radius:16px; --shadow:0 20px 40px rgba(0,0,0,.35);
+      --bg:#0b0c10;        /* near‑black page background */
+      --panel:#121318;     /* cards/nav background */
+      --muted:#9aa0a6;     /* secondary text */
+      --text:#ebeff3;      /* primary text */
+      --gold:#c9a449;      /* RC gold */
+      --gold-2:#e6c66d;    /* lighter gold */
+      --accent:#1f6feb;    /* subtle blue for links */
+      --radius:16px;
+      --shadow:0 20px 40px rgba(0,0,0,.35);
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.6;
+    }
 
     /* NAV */
-    .nav{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(10,10,12,.85),rgba(10,10,12,.55));backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(140%) blur(8px);
+      background:linear-gradient(180deg,rgba(10,10,12,.85),rgba(10,10,12,.55));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
     .nav-inner{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .brand .logo{height:36px;width:auto;display:block;filter: drop-shadow(0 6px 16px rgba(201,164,73,.25))}
-    .brand span{font-family:Cinzel,serif;font-weight:700;letter-spacing:.5px}
-    .nav a{color:var(--text);text-decoration:none;margin-left:20px;font-weight:600;opacity:.9}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.5px;text-decoration:none;color:var(--text)}
+    .brand img.logo{height:36px;width:auto;display:block;border-radius:10px;box-shadow:var(--shadow)}
+    .brand span{font-family:Cinzel,serif;font-size:18px}
+    .nav a{color:var(--text);text-decoration:none;margin-left:20px;font-weight:500;opacity:.9}
     .nav a:hover{color:var(--gold-2);opacity:1}
-    @media (max-width:640px){ .brand span{display:none} .nav a{margin-left:14px} }
 
     /* HERO */
-    .hero{position:relative;overflow:hidden;background:radial-gradient(1100px 500px at 15% -10%,#1c1f27 0%,#0e1117 50%,#0b0c10 100%);border-bottom:1px solid rgba(255,255,255,.06)}
-    .hero-wrap{max-width:1100px;margin:0 auto;padding:86px 20px 70px;display:grid;gap:24px}
+    .hero{
+      position:relative;overflow:hidden;
+      background:radial-gradient(1100px 600px at 15% -10%,#1c1f27 0%,#0e1117 55%,#0b0c10 100%);
+      border-bottom:1px solid rgba(255,255,255,.06);
+      isolation:isolate;
+    }
+    /* gold glow shapes */
+    .hero::before,
+    .hero::after{
+      content:"";position:absolute;inset:auto -20% -20% -20%;
+      height:60vh;z-index:-1;filter:blur(50px);opacity:.35;
+      background:
+        radial-gradient(40% 55% at 25% 25%, rgba(233,198,102,.55), transparent 60%),
+        radial-gradient(35% 45% at 75% 35%, rgba(201,164,73,.45), transparent 60%);
+    }
+
+    .hero-wrap{max-width:1100px;margin:0 auto;padding:96px 20px 72px;display:grid;gap:28px}
     .eyebrow{color:var(--gold-2);letter-spacing:.2em;font-weight:600;text-transform:uppercase;font-size:12px}
-    .hero h1{margin:0;font-size:clamp(34px,6vw,56px);line-height:1.1;font-weight:800}
-    .hero p{max-width:720px;color:var(--muted);font-size:clamp(15px,2.2vw,18px)}
+    .hero h1{margin:0;font-size:clamp(36px,6vw,58px);line-height:1.08;font-weight:800}
+    .hero p{max-width:760px;color:var(--muted);font-size:clamp(15px,2.2vw,18px)}
+
     .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{cursor:pointer;border:none;padding:14px 20px;border-radius:999px;font-weight:700;transition:transform .15s,box-shadow .15s,background .2s}
+    .btn{cursor:pointer;border:none;padding:14px 20px;border-radius:999px;font-weight:700;transition:transform .15s, box-shadow .15s, background .2s}
     .btn-primary{background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#1a1a1a}
     .btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 25px rgba(201,164,73,.35)}
     .btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.18)}
     .btn-ghost:hover{border-color:var(--gold-2);color:var(--gold-2)}
 
-    /* LAYOUT SECTIONS */
+    /* SECTIONS */
     section{max-width:1100px;margin:0 auto;padding:70px 20px}
     .split{display:grid;grid-template-columns:1.2fr 1fr;gap:28px}
     @media (max-width:900px){.split{grid-template-columns:1fr}}
+
+    .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(233,198,102,.4),transparent);margin:10px 0 24px}
 
     .card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
     @media (max-width:900px){.card-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:600px){.card-grid{grid-template-columns:1fr}}
 
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);transition:transform .18s,border-color .18s}
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:var(--radius);
+      padding:22px;box-shadow:var(--shadow);
+      transition:transform .18s,border-color .18s
+    }
     .card:hover{transform:translateY(-4px);border-color:rgba(233,199,98,.45)}
 
     .kicker{color:var(--gold-2);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:12px}
     h2{font-size:clamp(24px,3.8vw,34px);margin:6px 0 16px;line-height:1.2}
     .muted{color:var(--muted)}
 
-    .ic{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;margin-bottom:12px;background:radial-gradient(120% 120% at 50% 10%,rgba(233,199,98,.9),rgba(201,164,73,.85));color:#151515;font-weight:900;box-shadow:0 6px 16px rgba(201,164,73,.35)}
+    /* Icon chips */
+    .chip-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .ic{
+      width:48px;height:48px;border-radius:50%;
+      display:grid;place-items:center;
+      background:radial-gradient(120% 120% at 50% 10%,rgba(233,199,98,.95),rgba(201,164,73,.9));
+      color:#151515;box-shadow:0 6px 16px rgba(201,164,73,.35)
+    }
+    .ic svg{width:26px;height:26px;fill:#151515}
 
     /* FOOTER */
     footer{border-top:1px solid rgba(255,255,255,.06);background:#0a0b0f}
     .footer-inner{max-width:1100px;margin:0 auto;padding:28px 20px;color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+    .legal{font-size:12px;opacity:.85}
 
-    /* Smooth anchor */
+    /* Smooth anchor scrolling */
     html{scroll-behavior:smooth}
   </style>
 </head>
 <body>
-
   <!-- NAV -->
   <nav class="nav">
     <div class="nav-inner">
-      <a class="brand" href="#">
-        <!-- your uploaded logo in the repo root -->
+      <a href="/" class="brand">
+        <!-- if you uploaded a different filename, change src here -->
         <img src="rc-nextshift-logo.png" alt="RC‑NextShift logo" class="logo" />
         <span>RC‑NextShift</span>
       </a>
@@ -93,45 +142,56 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
+  <header class="hero">
     <div class="hero-wrap">
       <div class="eyebrow">Your Next Financial Shift</div>
       <h1>Direct, honest guidance that turns money stress into momentum.</h1>
-      <p>No fluff. No shame. Just clear steps, accountability, and practical systems you’ll actually stick to.</p>
+      <p>No fluff. Just clear steps, accountability, and practical systems you’ll actually stick to.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#services">See Services</a>
         <a class="btn btn-ghost" href="mailto:contact@rcnextshift.com">Email RC‑NextShift</a>
       </div>
     </div>
-  </section>
+  </header>
 
   <!-- ABOUT -->
   <section id="about" class="split">
     <div>
       <div class="kicker">About</div>
-      <h2>Built to be Real, Useful, and on Your Side</h2>
+      <h2>Built to be Real, Useful, and On Your Side</h2>
+      <div class="divider"></div>
       <p class="muted">
         RC‑NextShift is a financial guidance brand focused on practical wins. We craft plans you’ll actually follow—with
         direct feedback, simple tools, and support that respects where you’re starting.
       </p>
       <p class="muted"><strong>Mission:</strong> To be direct, upfront, honest, and truly help people change their lives for the better.</p>
-      <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
-        <div class="ic">$</div><div class="ic" style="font-size:24px;">
-  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
-    <path d="M0 0h1v15h15v1H0V0zm13.293 4.293a1 1 0 0 1 1.414 1.414l-4.5 4.5a1 1 0 0 1-1.414 0L6 7.414l-3.293 3.293a1 1 0 0 1-1.414-1.414l4-4a1 1 0 0 1 1.414 0l2.793 2.793 4.293-4.293z"/>
-  </svg>
-</div><div class="ic">✓</div>
+
+      <!-- Icon chips: $, growth chart (new), check -->
+      <div class="chip-row">
+        <div class="ic" title="Money Clarity">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.55 0 1 .45 1 1v1.06c1.53.2 2.66.92 3.4 2.18.28.47.12 1.09-.36 1.37s-1.09.12-1.37-.36c-.5-.84-1.24-1.27-2.67-1.27-1.64 0-2.5.74-2.5 1.7 0 .94.72 1.46 2.64 1.94l.54.13c2.36.56 3.86 1.53 3.86 3.62 0 1.95-1.46 3.36-3.54 3.69V20c0 .55-.45 1-1 1s-1-.45-1-1v-1.03c-1.83-.22-3.17-1.1-3.98-2.53-.28-.49-.1-1.11.39-1.39.49-.28 1.11-.1 1.39.39.6 1.04 1.57 1.55 3.2 1.55 1.86 0 2.9-.78 2.9-1.85 0-.98-.77-1.5-2.7-1.99l-.56-.13C9.34 12.6 8 11.72 8 9.89c0-1.9 1.45-3.28 3.5-3.61V4c0-.55.45-1 1-1z"/></svg>
+        </div>
+        <div class="ic" title="Growth">
+          <!-- Financial growth chart (up arrow) -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19a1 1 0 0 1 0-2h16.59l-3.3-3.3a1 1 0 0 1 1.42-1.4l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.42-1.4l3.3-3.3H3zM6 17a1 1 0 0 1-1-1V9a1 1 0 1 1 2 0v7a1 1 0 0 1-1 1zm5 0a1 1 0 0 1-1-1V7a1 1 0 1 1 2 0v9a1 1 0 0 1-1 1zm5 0a1 1 0 0 1-1-1V11a1 1 0 1 1 2 0v5a1 1 0 0 1-1 1z"/></svg>
+        </div>
+        <div class="ic" title="Accountability">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 16.2 5.8 12.5a1 1 0 0 1 1.4-1.4l2.3 2.3 7-7a1 1 0 0 1 1.4 1.4l-7.7 7.7a1 1 0 0 1-1.5 0z"/></svg>
+        </div>
       </div>
     </div>
+
+    <!-- Snapshot card -->
     <div class="card" style="align-self:start">
       <div class="kicker">Snapshot</div>
+      <div class="divider"></div>
       <ul class="muted" style="padding-left:18px;margin:12px 0 0">
         <li>1:1 money coaching & accountability</li>
         <li>Debt, spending, and savings frameworks</li>
         <li>Starter investing education (non‑advisory)</li>
         <li>Budget tools and templates</li>
       </ul>
-      <p class="muted" style="margin-top:12px;font-size:12px;opacity:.85">Educational content only. Not legal, tax, or investment advice.</p>
+      <p class="legal" style="margin-top:12px">Educational content only. Not legal, tax, or investment advice.</p>
     </div>
   </section>
 
@@ -139,20 +199,22 @@
   <section id="services">
     <div class="kicker">Services</div>
     <h2>Clarity, Momentum, Results</h2>
+    <div class="divider"></div>
+
     <div class="card-grid" style="margin-top:18px">
       <div class="card">
-        <div class="ic">①</div>
-        <h3 style="margin:6px 0">Kickstart Session</h3>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#151515"/></svg></div>
+        <h3 style="margin:6px 0 6px">Kickstart Session</h3>
         <p class="muted">A focused 60‑minute call to map your goals, assess your numbers, and give you a 30‑day action plan.</p>
       </div>
       <div class="card">
-        <div class="ic">②</div>
-        <h3 style="margin:6px 0">Momentum Program</h3>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20h16v-2H4zm0-6h16v-2H4zm0-6h16V6H4z"/></svg></div>
+        <h3 style="margin:6px 0 6px">Momentum Program</h3>
         <p class="muted">Weekly check‑ins for 8 weeks. We build your spending system, debt plan, and fail‑proof savings habits.</p>
       </div>
       <div class="card">
-        <div class="ic">③</div>
-        <h3 style="margin:6px 0">Next‑Level Plan</h3>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zm0 8.7L4 7.4V17l8 4.6 8-4.6V7.4l-8 3.3z"/></svg></div>
+        <h3 style="margin:6px 0 6px">Next‑Level Plan</h3>
         <p class="muted">Deep‑dive strategy for longer‑term goals: emergency fund, big purchases, and first‑steps investing education.</p>
       </div>
     </div>
@@ -162,6 +224,8 @@
   <section id="blog">
     <div class="kicker">From the Journal</div>
     <h2>Fresh Lessons & Playbooks</h2>
+    <div class="divider"></div>
+
     <div class="card-grid" style="margin-top:18px">
       <div class="card">
         <h3 style="margin:0 0 4px">The 3‑Account Spending System</h3>
@@ -169,24 +233,26 @@
       </div>
       <div class="card">
         <h3 style="margin:0 0 4px">Debt Avalanche vs. Snowball</h3>
-        <p class="muted">Which payoff method fits your personality—and gets you over the finish line?</p>
+        <p class="muted">Which payoff method fits your personality — and gets you over the finish line?</p>
       </div>
       <div class="card">
         <h3 style="margin:0 0 4px">Emergency Fund: How Much?</h3>
         <p class="muted">Find your real number, and build it without starving your current life.</p>
       </div>
     </div>
+
     <div class="cta-row" style="margin-top:22px">
       <a class="btn btn-primary" href="#contact">Read the Blog (soon)</a>
       <a class="btn btn-ghost" href="#contact">Get updates</a>
     </div>
   </section>
 
-  <!-- CONTACT CTA -->
+  <!-- CTA -->
   <section id="contact">
     <div class="card" style="display:grid;place-items:center;text-align:center;padding:40px">
       <div class="kicker">Ready?</div>
       <h2 style="margin:6px 0 10px">Make your next shift the one that sticks.</h2>
+      <div class="divider" style="width:220px"></div>
       <p class="muted" style="max-width:700px">Reply with your goals and a rough snapshot of your numbers. We’ll lay out a starter plan in 48 hours.</p>
       <div class="cta-row" style="margin-top:14px">
         <a class="btn btn-primary" href="mailto:contact@rcnextshift.com">Email RC‑NextShift</a>
@@ -199,11 +265,14 @@
   <footer>
     <div class="footer-inner">
       <div>© <span id="y"></span> RC‑NextShift. All rights reserved.</div>
-      <div class="muted" style="font-size:12px">Educational purposes only. RC‑NextShift does not provide legal, tax, or investment advice.</div>
+      <div class="legal">Educational purposes only. RC‑NextShift does not provide legal, tax, or investment advice.</div>
     </div>
   </footer>
 
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <script>
+    // Set year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
 
