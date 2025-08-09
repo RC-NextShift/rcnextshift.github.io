@@ -1,113 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RC-NextShift | Your Next Financial Shift</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RC‑NextShift | Honest, High‑Impact Financial Guidance</title>
+  <meta name="description" content="RC‑NextShift helps you make clear, confident money moves with direct, honest, high‑impact guidance." />
 
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-  <link rel="stylesheet" href="style.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --bg: #0b0c10;            /* page background (near‑black) */
+      --panel: #121318;         /* card background */
+      --muted: #9aa0a6;         /* secondary text */
+      --text: #ebeff3;          /* primary text */
+      --gold: #c9a449;          /* RC‑NextShift gold */
+      --gold-2: #e6c66d;        /* lighter gold for highlights */
+      --accent: #1f6feb;        /* subtle blue accent for links */
+      --radius: 16px;
+      --shadow: 0 20px 40px rgba(0,0,0,.35);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.6;
     }
 
-    header {
-      background-color: #1a1a1a;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    /* ── Nav ───────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: linear-gradient(180deg, rgba(10,10,12,.85), rgba(10,10,12,.55));
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .5px; }
+    .brand-logo {
+      width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
+      background: radial-gradient(120% 120% at 50% 10%, var(--gold-2), var(--gold));
+      color: #151515; font-weight: 900; font-family: Cinzel, serif; box-shadow: var(--shadow);
     }
+    .brand span { font-family: Cinzel, serif; font-size: 18px; }
+    .nav a { color: var(--text); text-decoration: none; margin-left: 20px; font-weight: 500; opacity: .9; }
+    .nav a:hover { color: var(--gold-2); opacity: 1; }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 1rem;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
+    /* ── Hero ─────────────────────────────────────────── */
     .hero {
-      background-color: #004080;
-      color: white;
-      padding: 4rem 2rem;
-      text-align: center;
+      position: relative; overflow: hidden;
+      background: radial-gradient(1100px 500px at 15% -10%, #1c1f27 0%, #0e1117 50%, #0b0c10 100%);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .hero-wrap { max-width: 1100px; margin: 0 auto; padding: 90px 20px 70px; display: grid; gap: 28px; }
+    .eyebrow { color: var(--gold-2); letter-spacing: .2em; font-weight: 600; text-transform: uppercase; font-size: 12px; }
+    .hero h1 { margin: 0; font-size: clamp(34px, 6vw, 56px); line-height: 1.1; font-weight: 800; }
+    .hero p { max-width: 720px; color: var(--muted); font-size: clamp(15px, 2.2vw, 18px); }
+
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { cursor: pointer; border: none; padding: 14px 20px; border-radius: 999px; font-weight: 700; transition: transform .15s ease, box-shadow .15s ease, background .2s ease; }
+    .btn-primary { background: linear-gradient(135deg, var(--gold-2), var(--gold)); color: #1a1a1a; }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 25px rgba(201,164,73,.35); }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,.18); }
+    .btn-ghost:hover { border-color: var(--gold-2); color: var(--gold-2); }
+
+    /* ── Sections ─────────────────────────────────────── */
+    section { max-width: 1100px; margin: 0 auto; padding: 70px 20px; }
+    .split { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; }
+    @media (max-width: 900px){ .split { grid-template-columns: 1fr; } }
+
+    .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+    @media (max-width: 900px){ .card-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px){ .card-grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      padding: 22px; box-shadow: var(--shadow);
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(233,199,98,.45); }
+
+    .kicker { color: var(--gold-2); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: 12px; }
+    h2 { font-size: clamp(24px, 3.8vw, 34px); margin: 6px 0 16px; line-height: 1.2; }
+    .muted { color: var(--muted); }
+
+    /* Icon circle */
+    .ic {
+      width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 12px;
+      background: radial-gradient(120% 120% at 50% 10%, rgba(233,199,98,.9), rgba(201,164,73,.85));
+      color: #151515; font-weight: 900;
+      box-shadow: 0 6px 16px rgba(201,164,73,.35);
     }
 
-    .hero h2 {
-      margin-bottom: 1rem;
-    }
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,.06); background: #0a0b0f; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; padding: 28px 20px; color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+    .legal { font-size: 12px; opacity: .8; }
 
-    .cta-button {
-      background-color: white;
-      color: #004080;
-      padding: 0.75rem 1.5rem;
-      text-decoration: none;
-      border-radius: 4px;
-      font-weight: bold;
-    }
-
-    .cta-button:hover {
-      background-color: #e6e6e6;
-    }
-
-    section {
-      padding: 2rem;
-    }
-
-    footer {
-      background-color: #f0f0f0;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.875rem;
-    }
+    /* Smooth anchor */
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>RC-NextShift</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#blog">Blog</a>
-      <a href="mailto:contact@rcnextshift.com">Contact</a>
-    </nav>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-logo">RC</div>
+        <span>RC‑NextShift</span>
+      </div>
+      <div>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#blog">Blog</a>
+        <a href="mailto:contact@rcnextshift.com">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-wrap">
+      <div class="eyebrow">Direct • Honest • Actionable</div>
+      <h1>Your Next Financial Shift Starts Now</h1>
+      <p>
+        No fluff. No shame. Just clear steps to build stability, crush debt, and move confidently toward the life you want.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#services">Get Started</a>
+        <a class="btn btn-ghost" href="#about">Learn More</a>
+      </div>
+    </div>
   </header>
 
-  <section class="hero">
-    <h2>Your Next Financial Shift Starts Now</h2>
-    <p>No fluff. No shame. Just real answers and real results.</p>
-    <a href="#about" class="cta-button">Learn More</a>
+  <!-- ABOUT -->
+  <section id="about" class="split">
+    <div>
+      <div class="kicker">About</div>
+      <h2>Built to be Real, Useful, and on Your Side</h2>
+      <p class="muted">
+        RC‑NextShift is a financial guidance brand focused on practical wins. We craft plans you’ll actually follow, with
+        direct feedback, simple tools, and support that respects where you’re starting.
+      </p>
+      <p class="muted"><strong>Mission:</strong> To be direct, upfront, honest, and truly help people change their lives for the better.</p>
+      <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;">
+        <div class="ic">$</div>
+        <div class="ic">↑</div>
+        <div class="ic">✓</div>
+      </div>
+    </div>
+    <div class="card" style="align-self:start;">
+      <div class="kicker">Snapshot</div>
+      <ul class="muted" style="padding-left:18px; margin:12px 0 0;">
+        <li>1:1 money coaching & accountability</li>
+        <li>Debt, spending, and savings frameworks</li>
+        <li>Starter investing education (non‑advisory)</li>
+        <li>Budget tools and templates</li>
+      </ul>
+      <p class="legal" style="margin-top:12px;">Educational content only. Not legal, tax, or investment advice.</p>
+    </div>
   </section>
 
-  <section id="about">
-    <h2>About RC-NextShift</h2>
-    <p>RC-NextShift is a personal finance and life empowerment brand created to help individuals make better decisions, build lasting financial stability, and transform their lives through direct, honest, and actionable guidance.</p>
-    <p><strong>Mission:</strong> To be direct, upfront, honest, and truly help people to change their lives for the better.</p>
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="kicker">Services</div>
+    <h2>Clarity, Momentum, Results</h2>
+    <div class="card-grid" style="margin-top:18px;">
+      <div class="card">
+        <div class="ic">①</div>
+        <h3 style="margin:6px 0 6px;">Kickstart Session</h3>
+        <p class="muted">A focused 60‑minute call to map your goals, assess your numbers, and give you a 30‑day action plan.</p>
+      </div>
+      <div class="card">
+        <div class="ic">②</div>
+        <h3 style="margin:6px 0 6px;">Momentum Program</h3>
+        <p class="muted">Weekly check‑ins for 8 weeks. We build your spending system, debt plan, and fail‑proof savings habits.</p>
+      </div>
+      <div class="card">
+        <div class="ic">③</div>
+        <h3 style="margin:6px 0 6px;">Next‑Level Plan</h3>
+        <p class="muted">Deep‑dive strategy for longer‑term goals: emergency fund, big purchases, and first‑steps investing education.</p>
+      </div>
+    </div>
   </section>
 
+  <!-- BLOG PREVIEW -->
   <section id="blog">
-    <h2>Latest Blog Posts</h2>
-    <p>Coming soon: Weekly tips, lessons, and real stories to help you shift into a better financial future.</p>
+    <div class="kicker">From the Journal</div>
+    <h2>Fresh Lessons & Playbooks</h2>
+    <div class="card-grid" style="margin-top:18px;">
+      <div class="card">
+        <h3 style="margin:0 0 4px;">The 3‑Account Spending System</h3>
+        <p class="muted">A simple structure that keeps bills covered, spending honest, and savings automatic.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 4px;">Debt Avalanche vs. Snowball</h3>
+        <p class="muted">Which payoff method fits your personality — and gets you over the finish line?</p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 4px;">Emergency Fund: How Much?</h3>
+        <p class="muted">Find your real number, and build it without starving your current life.</p>
+      </div>
+    </div>
+    <div class="cta-row" style="margin-top:22px;">
+      <a class="btn btn-primary" href="#contact">Read the Blog (soon)</a>
+      <a class="btn btn-ghost" href="#contact">Get updates</a>
+    </div>
   </section>
+
+  <!-- CTA -->
+  <section id="contact">
+    <div class="card" style="display:grid; place-items:center; text-align:center; padding:40px;">
+      <div class="kicker">Ready?</div>
+      <h2 style="margin:6px 0 10px;">Make your next shift the one that sticks.</h2>
+      <p class="muted" style="max-width:700px;">Reply with your goals and a rough snapshot of your numbers. We’ll lay out a starter plan in 48 hours.</p>
+      <div class="cta-row" style="margin-top:14px;">
+        <a class="btn btn-primary" href="mailto:contact@rcnextshift.com">Email RC‑NextShift</a>
+        <a class="btn btn-ghost" href="#services">See services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 RC-NextShift. All rights reserved.</p>
-    <p><small>This website is for educational purposes only and does not provide legal, tax, or investment advice.</small></p>
+    <div class="footer-inner">
+      <div>© <span id="y"></span> RC‑NextShift. All rights reserved.</div>
+      <div class="legal">Educational purposes only. RC‑NextShift does not provide legal, tax, or investment advice.</div>
+    </div>
   </footer>
+
+  <script>
+    // Set year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
-<!-- Trigger redeploy -->
 </html>
+
