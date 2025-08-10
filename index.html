@@ -16,6 +16,7 @@
 
   <style>
     :root{
+      --logo-height: 72px; /* Change this to resize everything */
       --bg:#0b0c10;        /* near‑black page background */
       --panel:#121318;     /* cards/nav background */
       --muted:#9aa0a6;     /* secondary text */
@@ -40,13 +41,14 @@
     /* NAV */
     .nav {position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(140%) blur(8px); background: linear-gradient(180deg, rgba(10, 10, 12, .85), rgba(10, 10, 12, .55));
           border-bottom: 1px solid rgba(255, 255, 255, .06);box-shadow: 0 0 15px rgba(201, 164, 73, 0.4); /* Gold glow */}
-    .nav-inner {max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: auto;}
-    .brand {display: flex;align-items: center;gap: 12px;font-weight: 700;letter-spacing: .5px;text-decoration: none;color: var(--text);}
-    .brand span {font-family: Cinzel, serif;font-size: 28px; /* Bigger text to match larger logo */}
-    .brand img.logo {height: 72px; /* Adjust between 64–80px depending on how big you want it */width: auto;display: block;}
+    .nav-inner {max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: calc(var(--logo-height) + 18px);}
+    .brand {display: flex;align-items: center;gap: 14px;font-weight: 700;letter-spacing: .5px;text-decoration: none;color: var(--text);}
+    .brand span {font-family: Cinzel, serif;font-size: calc(var(--logo-height) * 0.39) /* Scales with logo */;line-height: 1;/* Bigger text to match larger logo */}
+    .brand img.logo {height: var(--logo-height); /* Adjust between 64–80px depending on how big you want it */width: auto;display: block;}
     /* Glow on hover */
     .brand img.logo:hover {box-shadow: 0 0 14px rgba(201,164,73,0.75);}
-    .nav a{color:var(--text);text-decoration:none;margin-left:20px;font-weight:500;opacity:.9;}
+    .nav a{color:var(--text);text-decoration:none;margin-left:20px;font-weight:500;opacity:.9;line-height: 1; font-size: calc(var(--logo-height) * 0.28); /* Menu text scales with logo */
+           display: flex; align-items: center; height: var(--logo-height);}
     .nav a:hover{color:var(--gold-2);opacity:1;}
 
     /* HERO */
