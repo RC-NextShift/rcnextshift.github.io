@@ -47,8 +47,10 @@
     .nav-inner{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
     .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.5px;text-decoration:none;color:var(--text)}
     .brand span{font-family:Cinzel,serif;font-size:18px}
-    .brand img.logo{height:56px;width:auto;display:block;border-radius:10px;box-shadow:0 4px 12px rgba(201,164,73,.6);
-    }
+    .brand img.logo {height: 56px; /* bigger for visibility */width: auto;display: block;border-radius: 10px;transition: box-shadow 0.3s ease;}
+    /* Glow on hover */
+    .brand img.logo:hover {box-shadow: 0 0 14px rgba(201,164,73,0.75);}
+
     .nav a{color:var(--text);text-decoration:none;margin-left:20px;font-weight:500;opacity:.9}
     .nav a:hover{color:var(--gold-2);opacity:1}
 
@@ -57,8 +59,8 @@
       position:relative;overflow:hidden;
       background:radial-gradient(1100px 600px at 15% -10%,#1c1f27 0%,#0e1117 55%,#0b0c10 100%);
       border-bottom:1px solid rgba(255,255,255,.06);
-      isolation:isolate;
-    }
+      isolation:isolate;}
+    
     /* gold glow shapes behind content */
     .hero::before,
     .hero::after{
