@@ -620,3 +620,5 @@ button:focus-visible{
 
 /* spacing helpers */
 .mt-lg { margin-top: 1.4rem; }
+
+body.menu-open { overflow: hidden; }
