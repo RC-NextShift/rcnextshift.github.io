@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RC-NextShift | Client Questionnaire</title>
+  <link rel="icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+  <main class="page">
+    <section class="section">
+      <div class="container">
+        <h1>RC-NextShift Client Questionnaire</h1>
+        <p>Answer a few questions and I’ll follow up with next steps.</p>
+
+        <form
+          action="https://formspree.io/f/xqekpzyw"
+          method="POST"
+          class="form"
+        >
+          <!-- OPTIONAL: after submit, send them to a thank-you page -->
+          <input type="hidden" name="_redirect" value="https://rcnextshift.github.io/forms/thanks.html">
+
+          <div class="form-row">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+
+          <div class="form-row">
+            <label for="phone">Phone (optional)</label>
+            <input id="phone" name="phone" type="tel" />
+          </div>
+
+          <div class="form-row">
+            <label for="business">Business name</label>
+            <input id="business" name="business" type="text" required />
+          </div>
+
+          <div class="form-row">
+            <label for="website">Website / social link (optional)</label>
+            <input id="website" name="website" type="url" placeholder="https://…" />
+          </div>
+
+          <div class="form-row">
+            <label for="help">What do you want help with?</label>
+            <select id="help" name="help" required>
+              <option value="" selected disabled>Select one…</option>
+              <option>Automation & follow-ups</option>
+              <option>Client onboarding system</option>
+              <option>Scheduling + reminders</option>
+              <option>Payments / invoicing setup</option>
+              <option>CRM / pipeline setup</option>
+              <option>General workflow cleanup</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="tools">What tools do you use now? (optional)</label>
+            <input id="tools" name="tools" type="text" placeholder="Gmail, Square, Calendly, etc." />
+          </div>
+
+          <div class="form-row">
+            <label for="bottleneck">What’s the biggest bottleneck right now?</label>
+            <textarea id="bottleneck" name="bottleneck" rows="5" required></textarea>
+          </div>
+
+          <div class="form-row">
+            <label for="timeline">Timeline</label>
+            <select id="timeline" name="timeline" required>
+              <option value="" selected disabled>Select one…</option>
+              <option>ASAP (this week)</option>
+              <option>2–4 weeks</option>
+              <option>1–2 months</option>
+              <option>Just exploring</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="contact">Best way to contact you</label>
+            <select id="contact" name="best_contact" required>
+              <option value="" selected disabled>Select one…</option>
+              <option>Email</option>
+              <option>Text</option>
+              <option>Phone call</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn">Submit</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
