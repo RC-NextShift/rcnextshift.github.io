@@ -303,7 +303,7 @@ body.menu-open{ overflow: hidden; }
   margin-left: 12px;
   background: transparent;
   color: #fde047;
-  border: 1px solid rgba(250, 204, 21, 0.45);
+  border: 1px solid rgba(250, 204, 21, 0.55);
   box-shadow: none;
 }
 
