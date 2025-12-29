@@ -330,6 +330,11 @@ body.menu-open{ overflow: hidden; }
   padding: 3rem 1.5rem 4rem;
 }
 
+/* Prevent the first section after the hero from sitting on the hero overlay edge */
+#who{
+  padding-top: 4.25rem;
+}
+
 .section h2{
   font-size: 1.9rem;
   margin: 0 0 0.8rem;
