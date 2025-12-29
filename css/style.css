@@ -332,8 +332,19 @@ body.menu-open{ overflow: hidden; }
 
 /* Prevent the first section after the hero from sitting on the hero overlay edge */
 #who{
-  padding-top: 4.25rem;
+  position: relative;
 }
+
+#who::before{
+  content:"";
+  position: absolute;
+  inset: -14px 0 auto 0;
+  height: 140px;
+  background: linear-gradient(to bottom, rgba(5,8,22,0.85), rgba(5,8,22,0));
+  pointer-events: none;
+  z-index: -1;
+}
+
 
 .section h2{
   font-size: 1.9rem;
