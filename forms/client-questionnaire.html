@@ -11,7 +11,7 @@
   <meta name="robots" content="noindex,follow" />
   <link rel="canonical" href="https://rcnextshift.com/forms/client-questionnaire.html" />
 
-  <!-- Social previews (fine even though noindex; helps if shared) -->
+  <!-- Social previews -->
   <meta property="og:title" content="Client Questionnaire | RC-NextShift" />
   <meta property="og:description" content="Share a few workflow details so RC-NextShift can recommend the best next step." />
   <meta property="og:url" content="https://rcnextshift.com/forms/client-questionnaire.html" />
@@ -25,11 +25,8 @@
 </head>
 
 <body>
-
-  <!-- Skip link -->
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Hamburger menu consistent with site -->
   <header class="top-nav">
     <button
       class="menu-toggle"
@@ -50,6 +47,7 @@
       <a href="../index.html#resources">Resources</a>
       <a href="../index.html#contact">Contact</a>
       <a href="../services/automation-checkup.html">Start Checkup</a>
+      <a href="../services/bookkeeping-workflow-buildout.html">Pricing</a>
     </nav>
 
     <div class="menu-backdrop" aria-hidden="true"></div>
@@ -70,7 +68,8 @@
         <div class="note-box">
           <strong>Heads up:</strong>
           <div class="small muted" style="margin-top: 6px;">
-            This form helps me review your workflow before I follow up with next steps.
+            This helps me review your workflow before I follow up with next steps.
+            <strong>Typical reply time:</strong> within 1 business day.
           </div>
         </div>
 
@@ -85,8 +84,11 @@
           <!-- Helpful email subject in your inbox -->
           <input type="hidden" name="_subject" value="New RC-NextShift Intake Submission">
 
-          <!-- Track which offer they came in through -->
-          <input type="hidden" name="offer" value="Automation Checkup / Systems Intake">
+          <!-- Tracking fields -->
+          <input type="hidden" name="offer" id="offer" value="Client Questionnaire / Systems Intake">
+          <input type="hidden" name="package" id="package" value="">
+          <input type="hidden" name="source" id="source" value="">
+          <input type="hidden" name="page" id="page" value="">
 
           <!-- Honeypot (spam trap) -->
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
@@ -160,7 +162,7 @@
             </select>
           </div>
 
-          <button type="submit" class="btn">Submit</button>
+          <button type="submit" class="btn">Submit Intake</button>
 
           <p class="contact-note">
             By submitting, you agree RC-NextShift can contact you about your request. I don’t sell your info.
@@ -173,23 +175,37 @@
         </p>
 
         <p class="contact-note" style="margin-top: 0.75rem;">
-          <a class="contact-link" href="../index.html">Return to Home</a>
+          <a class="contact-link" href="../index.html#home">Return to Home</a>
         </p>
       </div>
     </section>
   </main>
 
-  <!-- Floating logo -->
   <a href="../index.html#home" class="home-logo-float" aria-label="Back to home">
     <img src="../images/business-logo.png" alt="RC-NextShift Home" />
   </a>
 
   <script>
+    // Capture query params + referrer so you know what offer/package they clicked.
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const pkg = (params.get('package') || '').trim();
+      const source = (params.get('source') || '').trim();
+
+      const pkgEl = document.getElementById('package');
+      const sourceEl = document.getElementById('source');
+      const pageEl = document.getElementById('page');
+
+      if (pkgEl && pkg) pkgEl.value = pkg;
+      if (sourceEl) sourceEl.value = source || document.referrer || 'direct';
+      if (pageEl) pageEl.value = window.location.href;
+    })();
+
+    // Mobile menu
     (function () {
       const menuToggle = document.querySelector('.menu-toggle');
       const menuPanel = document.querySelector('.menu-panel');
       const menuBackdrop = document.querySelector('.menu-backdrop');
-
       if (!menuToggle || !menuPanel || !menuBackdrop) return;
 
       function openMenu() {
@@ -199,7 +215,6 @@
         menuToggle.setAttribute('aria-expanded', 'true');
         document.body.classList.add('menu-open');
       }
-
       function closeMenu() {
         menuPanel.classList.remove('open');
         menuBackdrop.classList.remove('open');
@@ -207,21 +222,16 @@
         menuToggle.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('menu-open');
       }
-
       function toggleMenu() {
-        const isOpen = menuPanel.classList.contains('open');
-        isOpen ? closeMenu() : openMenu();
+        menuPanel.classList.contains('open') ? closeMenu() : openMenu();
       }
-
       menuToggle.addEventListener('click', toggleMenu);
       menuBackdrop.addEventListener('click', closeMenu);
       menuPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && menuPanel.classList.contains('open')) closeMenu();
       });
     })();
   </script>
-
 </body>
 </html>
