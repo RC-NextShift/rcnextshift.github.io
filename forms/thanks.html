@@ -4,15 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Submitted | RC-NextShift</title>
+  <title>Received | RC-NextShift</title>
   <meta name="description" content="Thanks for submitting your RC-NextShift intake. Next step: book a quick 15-minute call." />
 
-  <!-- Utility page: keep it out of search results -->
   <meta name="robots" content="noindex,follow" />
   <link rel="canonical" href="https://rcnextshift.com/forms/thanks.html" />
 
-  <!-- Social previews -->
-  <meta property="og:title" content="Submitted | RC-NextShift" />
+  <meta property="og:title" content="Received | RC-NextShift" />
   <meta property="og:description" content="Thanks for submitting your intake. Next step: book a quick 15-minute call." />
   <meta property="og:url" content="https://rcnextshift.com/forms/thanks.html" />
   <meta property="og:type" content="website" />
@@ -20,16 +18,12 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="https://rcnextshift.com/images/business-logo.png" />
 
-  <!-- Theme -->
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 
 <body>
-
-  <!-- Skip link -->
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Hamburger menu consistent with site -->
   <header class="top-nav">
     <button
       class="menu-toggle"
@@ -50,6 +44,7 @@
       <a href="../index.html#resources">Resources</a>
       <a href="../index.html#contact">Contact</a>
       <a href="../services/automation-checkup.html">Start Checkup</a>
+      <a href="../services/bookkeeping-workflow-buildout.html">Pricing</a>
     </nav>
 
     <div class="menu-backdrop" aria-hidden="true"></div>
@@ -62,7 +57,8 @@
         <h1 class="page-title">Received ✅</h1>
 
         <p class="section-intro">
-          Got it. Next step is quick — book a 15-minute call so we can review your answers and lock the right plan.
+          Got it. I’ll review your intake and follow up <strong>within 1 business day</strong>.
+          If you want to move faster, book a quick call now.
         </p>
 
         <div class="note-box">
@@ -75,14 +71,14 @@
         </div>
 
         <div style="margin-top: 1.4rem;">
-          <a class="cta-btn" href="../book-interview.html" target="_blank" rel="noopener noreferrer">
-            Step 2: Book Your 15-Min Call
+          <a class="cta-btn" href="/services/book-interview.html">
+            Book Your 15-Min Call
           </a>
         </div>
 
         <p class="contact-note" style="margin-top: 0.95rem;">
-          Ready to start with the paid plan instead?
-          <a class="contact-link" href="../services/automation-checkup.html">Go to the $75 Automation Checkup</a>.
+          Want to start with the paid plan instead?
+          <a class="contact-link" href="/services/automation-checkup.html">Go to the $75 Automation Checkup</a>.
         </p>
 
         <p class="contact-note" style="margin-top: 0.85rem;">
@@ -90,13 +86,12 @@
         </p>
 
         <p class="contact-note" style="margin-top: 0.75rem;">
-          <a class="contact-link" href="../index.html">Return to Home</a>
+          <a class="contact-link" href="../index.html#home">Return to Home</a>
         </p>
       </section>
     </div>
   </main>
 
-  <!-- Floating logo -->
   <a href="../index.html#home" class="home-logo-float" aria-label="Back to home">
     <img src="../images/business-logo.png" alt="RC-NextShift Home" />
   </a>
@@ -106,7 +101,6 @@
       const menuToggle = document.querySelector('.menu-toggle');
       const menuPanel = document.querySelector('.menu-panel');
       const menuBackdrop = document.querySelector('.menu-backdrop');
-
       if (!menuToggle || !menuPanel || !menuBackdrop) return;
 
       function openMenu() {
@@ -116,7 +110,6 @@
         menuToggle.setAttribute('aria-expanded', 'true');
         document.body.classList.add('menu-open');
       }
-
       function closeMenu() {
         menuPanel.classList.remove('open');
         menuBackdrop.classList.remove('open');
@@ -124,21 +117,16 @@
         menuToggle.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('menu-open');
       }
-
       function toggleMenu() {
-        const isOpen = menuPanel.classList.contains('open');
-        isOpen ? closeMenu() : openMenu();
+        menuPanel.classList.contains('open') ? closeMenu() : openMenu();
       }
-
       menuToggle.addEventListener('click', toggleMenu);
       menuBackdrop.addEventListener('click', closeMenu);
       menuPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && menuPanel.classList.contains('open')) closeMenu();
       });
     })();
   </script>
-
 </body>
 </html>
