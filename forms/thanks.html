@@ -3,40 +3,142 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Thanks for submitting your RC-NextShift checkup. Book your phone interview as the next step." />
+
   <title>Submitted | RC-NextShift</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="Thanks for submitting your RC-NextShift intake. Next step: book a quick 15-minute call." />
+
+  <!-- Utility page: keep it out of search results -->
+  <meta name="robots" content="noindex,follow" />
+  <link rel="canonical" href="https://rcnextshift.com/forms/thanks.html" />
+
+  <!-- Social previews -->
+  <meta property="og:title" content="Submitted | RC-NextShift" />
+  <meta property="og:description" content="Thanks for submitting your intake. Next step: book a quick 15-minute call." />
+  <meta property="og:url" content="https://rcnextshift.com/forms/thanks.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://rcnextshift.com/images/business-logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="https://rcnextshift.com/images/business-logo.png" />
+
+  <!-- Theme -->
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
+
 <body>
 
-  <main class="page">
-    <div class="container">
+  <!-- Skip link -->
+  <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- Hamburger menu consistent with site -->
+  <header class="top-nav">
+    <button
+      class="menu-toggle"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      type="button"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <nav class="menu-panel" id="mobile-menu" aria-hidden="true">
+      <a href="../index.html#home">Home</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#resources">Resources</a>
+      <a href="../index.html#contact">Contact</a>
+      <a href="../services/automation-checkup.html">Start Checkup</a>
+    </nav>
+
+    <div class="menu-backdrop" aria-hidden="true"></div>
+  </header>
+
+  <main class="page" id="main">
+    <div class="container">
       <section class="section" style="padding: 0; margin: 0;">
-        <h2>Submitted ✅</h2>
+        <div class="kicker">Submitted</div>
+        <h1 class="page-title">Received ✅</h1>
 
         <p class="section-intro">
-          Got it. Next step is quick — book your 15-minute phone interview so we can review your answers
-          and lock the right plan.
+          Got it. Next step is quick — book a 15-minute call so we can review your answers and lock the right plan.
         </p>
 
-        <div style="margin-top: 1.5rem;">
-          <a class="cta-btn" href="book-interview.html">
-            Step 2: Book Your Phone Interview
+        <div class="note-box">
+          <strong>What happens next</strong>
+          <ul style="margin: 10px 0 0; padding-left: 1.1rem; color: rgba(234,240,255,0.74);">
+            <li>I review your intake and identify the fastest wins.</li>
+            <li>We confirm priorities and what to fix first.</li>
+            <li>If you want, we map a simple build plan and timeline.</li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 1.4rem;">
+          <a class="cta-btn" href="../book-interview.html" target="_blank" rel="noopener noreferrer">
+            Step 2: Book Your 15-Min Call
           </a>
         </div>
 
-        <p class="contact-note" style="margin-top: 1rem;">
+        <p class="contact-note" style="margin-top: 0.95rem;">
+          Ready to start with the paid plan instead?
+          <a class="contact-link" href="../services/automation-checkup.html">Go to the $75 Automation Checkup</a>.
+        </p>
+
+        <p class="contact-note" style="margin-top: 0.85rem;">
           Prefer email? <a class="contact-link" href="mailto:rcnextshift@gmail.com">rcnextshift@gmail.com</a>
         </p>
 
         <p class="contact-note" style="margin-top: 0.75rem;">
-          <a class="contact-link" href="index.html">Return to Home</a>
+          <a class="contact-link" href="../index.html">Return to Home</a>
         </p>
       </section>
-
     </div>
   </main>
+
+  <!-- Floating logo -->
+  <a href="../index.html#home" class="home-logo-float" aria-label="Back to home">
+    <img src="../images/business-logo.png" alt="RC-NextShift Home" />
+  </a>
+
+  <script>
+    (function () {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const menuPanel = document.querySelector('.menu-panel');
+      const menuBackdrop = document.querySelector('.menu-backdrop');
+
+      if (!menuToggle || !menuPanel || !menuBackdrop) return;
+
+      function openMenu() {
+        menuPanel.classList.add('open');
+        menuBackdrop.classList.add('open');
+        menuPanel.setAttribute('aria-hidden', 'false');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('menu-open');
+      }
+
+      function closeMenu() {
+        menuPanel.classList.remove('open');
+        menuBackdrop.classList.remove('open');
+        menuPanel.setAttribute('aria-hidden', 'true');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+      }
+
+      function toggleMenu() {
+        const isOpen = menuPanel.classList.contains('open');
+        isOpen ? closeMenu() : openMenu();
+      }
+
+      menuToggle.addEventListener('click', toggleMenu);
+      menuBackdrop.addEventListener('click', closeMenu);
+      menuPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuPanel.classList.contains('open')) closeMenu();
+      });
+    })();
+  </script>
 
 </body>
 </html>

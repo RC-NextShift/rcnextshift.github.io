@@ -3,11 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>RC-NextShift | Systems & Automation for Real Businesses</title>
   <meta
     name="description"
     content="RC-NextShift helps small business owners build clean operations, smarter workflows, and simple automations—so the business runs smoother, clients are handled faster, and growth stops feeling chaotic."
   />
-  <title>RC-NextShift | Systems & Automation for Real Businesses</title>
+
+  <!-- Indexing -->
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://rcnextshift.com/" />
+
+  <!-- Social previews -->
+  <meta property="og:title" content="RC-NextShift | Systems & Automation for Real Businesses" />
+  <meta property="og:description" content="Clean operations, smarter workflows, and simple automations—so your business runs smoother and growth stops feeling chaotic." />
+  <meta property="og:url" content="https://rcnextshift.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://rcnextshift.com/images/business-logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="https://rcnextshift.com/images/business-logo.png" />
+  <meta name="theme-color" content="#0b0f14" />
+
+  <!-- Structured data (helps search/AI understand your business) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ProfessionalService",
+    "name":"RC-NextShift",
+    "url":"https://rcnextshift.com/",
+    "description":"RC-NextShift helps small business owners build clean operations, smarter workflows, and simple automations—so the business runs smoother, clients are handled faster, and growth stops feeling chaotic.",
+    "areaServed":["Remote (USA)"],
+    "email":"rcnextshift@gmail.com",
+    "logo":"https://rcnextshift.com/images/business-logo.png",
+    "image":"https://rcnextshift.com/images/business-logo.png",
+    "contactPoint":[{
+      "@type":"ContactPoint",
+      "contactType":"customer support",
+      "email":"rcnextshift@gmail.com"
+    }],
+    "sameAs":[]
+  }
+  </script>
 
   <!-- Theme -->
   <link rel="stylesheet" href="css/style.css" />
@@ -34,11 +70,11 @@
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
+      <a href="services/bookkeeping-workflow-buildout.html">Bookkeeping Workflow Buildout</a>
       <a href="#resources">Resources</a>
       <a href="#contact">Contact</a>
-      <a href="forms/client-questionnaire.html" target="_blank" rel="noopener noreferrer">
-        Start Checkup
-      </a>
+
+      <a href="services/automation-checkup.html">Start Checkup</a>
     </nav>
 
     <!-- Backdrop closes menu when clicked -->
@@ -58,19 +94,13 @@
         Real operations. Real execution. No guru fluff.
       </p>
 
-      <a
-        href="forms/client-questionnaire.html"
-        class="cta-btn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="services/automation-checkup.html" class="cta-btn">
         Start the Checkup
       </a>
-      <a href="book-interview.html" class="cta-btn cta-secondary" target="_blank"
-  rel="noopener noreferrer">
-  Book a 15-min Call
-</a>
 
+      <a href="book-interview.html" class="cta-btn cta-secondary" target="_blank" rel="noopener noreferrer">
+        Book a 15-min Call
+      </a>
     </section>
 
     <!-- ===== WHO RC-NEXTSHIFT IS FOR STRIP ===== -->
@@ -169,6 +199,9 @@
             <li>Identify bottlenecks and repeatable tasks to automate</li>
             <li>3–5 priority fixes + a simple 30-day action plan</li>
           </ul>
+          <div style="margin-top: 1rem;">
+            <a class="contact-cta" href="services/automation-checkup.html">View: Automation Checkup</a>
+          </div>
         </div>
 
         <div class="card">
@@ -182,6 +215,9 @@
             <li>Set up forms, templates, and handoffs</li>
             <li>Automations for reminders, follow-ups, and admin</li>
           </ul>
+          <div style="margin-top: 1rem;">
+            <a class="contact-cta" href="services/bookkeeping-workflow-buildout.html">View: Bookkeeping Workflow Buildout</a>
+          </div>
         </div>
 
         <div class="card">
@@ -337,22 +373,16 @@
           </p>
 
           <p class="contact-actions">
-            <a
-              class="contact-cta"
-              href="forms/client-questionnaire.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a class="contact-cta" href="services/automation-checkup.html">
               Start the Systems &amp; Automation Checkup
             </a>
-          
+          </p>
         </aside>
       </div>
     </section>
 
     <!-- ===== FLOATING LOGO BUTTON ===== -->
     <a href="#home" class="home-logo-float" aria-label="Back to top">
-      <!-- IMPORTANT: spaces in filenames can break on some hosts. Better: rename file to business-logo.png -->
       <img src="images/business-logo.png" alt="RC-NextShift Home" />
     </a>
 
@@ -374,7 +404,6 @@
       const yearEl = document.getElementById('year');
 
       if (yearEl) yearEl.textContent = new Date().getFullYear();
-
       if (!menuToggle || !menuPanel || !menuBackdrop) return;
 
       function openMenu() {
@@ -382,7 +411,7 @@
         menuBackdrop.classList.add('open');
         menuPanel.setAttribute('aria-hidden', 'false');
         menuToggle.setAttribute('aria-expanded', 'true');
-        document.body.classList.add('menu-open'); // lock scroll via CSS
+        document.body.classList.add('menu-open');
       }
 
       function closeMenu() {
@@ -400,13 +429,8 @@
 
       menuToggle.addEventListener('click', toggleMenu);
       menuBackdrop.addEventListener('click', closeMenu);
+      menuPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 
-      // Close when clicking ANY link inside the panel (hash links + external links)
-      menuPanel.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeMenu);
-      });
-
-      // Close on ESC
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && menuPanel.classList.contains('open')) closeMenu();
       });

@@ -3,15 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Book a quick phone interview with RC-NextShift to review your intake and identify the best workflow and automation upgrades." />
-  <title>Book Your Phone Interview | RC-NextShift</title>
+
+  <title>Book a 15-Min Call | RC-NextShift</title>
+  <meta name="description" content="Book a quick 15-minute call with RC-NextShift to review your workflow and decide the best next step. No pitch—just clarity." />
+
+  <!-- Utility page: keep it out of search results, but allow link discovery -->
+  <meta name="robots" content="noindex,follow" />
+  <link rel="canonical" href="https://rcnextshift.com/book-interview.html" />
+
+  <!-- Social previews -->
+  <meta property="og:title" content="Book a 15-Min Call | RC-NextShift" />
+  <meta property="og:description" content="A quick, focused call to review your workflow and pick the best next step. No pitch—just clarity." />
+  <meta property="og:url" content="https://rcnextshift.com/book-interview.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://rcnextshift.com/images/business-logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="https://rcnextshift.com/images/business-logo.png" />
 
   <!-- Uses your existing theme -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
 
-  <!-- Optional: keep hamburger menu consistent -->
+  <!-- Skip link -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Hamburger menu consistent with site -->
   <header class="top-nav">
     <button
       class="menu-toggle"
@@ -31,22 +49,30 @@
       <a href="index.html#services">Services</a>
       <a href="index.html#resources">Resources</a>
       <a href="index.html#contact">Contact</a>
-      <a href="forms/client-questionnaire.html" target="_blank" rel="noopener noreferrer">Start Checkup</a>
+
+      <!-- Point this to the offer page (not the questionnaire) -->
+      <a href="services/automation-checkup.html">Start Checkup</a>
     </nav>
 
     <div class="menu-backdrop" aria-hidden="true"></div>
   </header>
 
-  <main class="page">
+  <main class="page" id="main">
     <div class="container">
 
       <section class="section" style="padding: 0; margin: 0;">
-        <h2>Book your 15-minute phone interview</h2>
+        <div class="kicker">Next Step</div>
+        <h1 class="page-title">Book your 15-minute call</h1>
 
         <p class="section-intro">
-          This is a quick, focused call to review your questionnaire, confirm what’s messy right now,
-          and decide the best next step. No sales pitch. Just clarity.
+          This is a quick, focused call to understand what’s messy right now and decide the best next step.
+          No pitch. Just clarity.
         </p>
+
+        <div class="meta-row">
+          <div class="meta-pill"><strong>15 min</strong> • Phone / Google Meet</div>
+          <div class="meta-pill">Outcome: clear priorities + next-step plan</div>
+        </div>
 
         <div class="card-grid" style="margin-top: 1.5rem;">
           <div class="card">
@@ -54,7 +80,7 @@
             <ul>
               <li>Your current workflow (lead → booked → paid → delivered)</li>
               <li>Where time is being wasted / leads are dropping</li>
-              <li>What to automate first for the fastest win</li>
+              <li>What to fix first for the fastest win</li>
             </ul>
           </div>
 
@@ -62,20 +88,31 @@
             <h3>What to have ready</h3>
             <ul>
               <li>Your calendar availability</li>
-              <li>The tools you currently use (texts/email/forms/payments)</li>
+              <li>The tools you use (texts/email/forms/payments)</li>
               <li>Your biggest operational pain point</li>
             </ul>
           </div>
         </div>
 
-        <div style="margin-top: 1.75rem;">
+        <div class="note-box">
+          <strong>What happens after you book</strong>
+          <div class="small muted" style="margin-top: 6px;">
+            You’ll get a calendar confirmation. On the call, we’ll pick the simplest next step:
+            either the <em>$75 Automation Checkup</em> (clarity + plan) or a buildout if you’re ready to implement.
+          </div>
+          <div style="margin-top: 10px;">
+            <a class="contact-cta" href="services/automation-checkup.html">Go to the Automation Checkup page</a>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.6rem;">
           <a
             class="cta-btn"
             href="https://calendar.app.google/HME3WE2rqEmVbYne8"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Book Your Phone Interview
+            Book Your 15-Min Call
           </a>
 
           <p class="contact-note" style="margin-top: 0.9rem;">
@@ -87,6 +124,11 @@
 
     </div>
   </main>
+
+  <!-- Optional: consistent floating logo back to top/home -->
+  <a href="index.html#home" class="home-logo-float" aria-label="Back to home">
+    <img src="images/business-logo.png" alt="RC-NextShift Home" />
+  </a>
 
   <script>
     (function () {

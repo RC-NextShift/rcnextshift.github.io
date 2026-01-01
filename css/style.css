@@ -1,8 +1,8 @@
-/* ================================
-   RC-NEXTSHIFT — CLEAN + BLUE TECH THEME (CLEAN FILE)
+/* =========================================================
+   RC-NEXTSHIFT — CLEAN + BLUE TECH THEME (FULL REPLACEMENT)
    Matches your HTML classes:
    .top-nav, .menu-toggle, .menu-panel, .menu-backdrop
-   .hero, .cta-btn
+   .hero, .cta-btn, .cta-secondary
    .section, .section-intro
    .card-grid, .card
    .why-grid, .why-card
@@ -11,16 +11,23 @@
    .contact-actions, .contact-link, .contact-cta, .contact-note
    .home-logo-float
    .site-footer, .footer-small
-   Forms:
+   Forms / utility pages:
    .page, .container, .form, .form-row, .btn
-   ================================ */
+   Service/utility add-ons:
+   .kicker, .page-title, .meta-row, .meta-pill, .split,
+   .pricing-grid, .package, .note-box, .faq, .answer
+   ========================================================= */
 
-/* ===== THEME TOKENS ===== */
+/* =========================
+   THEME TOKENS
+   ========================= */
 :root{
   --rc-bg0: #050814;                 /* deep navy */
   --rc-bg1: #070b1f;                 /* slightly lighter */
+
   --rc-surface: rgba(18, 24, 56, 0.55);
   --rc-surface-strong: rgba(18, 24, 56, 0.72);
+
   --rc-border: rgba(170, 190, 255, 0.16);
   --rc-border-soft: rgba(170, 190, 255, 0.10);
 
@@ -33,10 +40,13 @@
 
   --rc-shadow: 0 12px 40px rgba(0,0,0,0.45);
   --rc-radius: 18px;
+
   --rc-max: 1040px;
 }
 
-/* ===== RESET / BASE ===== */
+/* =========================
+   RESET / BASE
+   ========================= */
 *{ box-sizing: border-box; }
 html{ scroll-behavior: smooth; }
 
@@ -50,7 +60,7 @@ body{
   overflow-x: hidden;
 }
 
-/* global glow */
+/* Global glow */
 body::before{
   content:"";
   position: fixed;
@@ -64,7 +74,7 @@ body::before{
     linear-gradient(180deg, var(--rc-bg0), var(--rc-bg1));
 }
 
-/* subtle grid overlay */
+/* Subtle grid overlay */
 body::after{
   content:"";
   position: fixed;
@@ -86,7 +96,7 @@ body::after{
 
 main{ padding-bottom: 120px; }
 
-/* ===== LINKS / FOCUS ===== */
+/* Links / focus */
 a{ color: inherit; }
 
 a:focus-visible,
@@ -96,8 +106,10 @@ button:focus-visible{
   border-radius: 10px;
 }
 
-/* ===== TOP NAV (HAMBURGER ONLY) ===== */
-/* IMPORTANT: height:0 prevents the header from blocking clicks on the page. */
+/* =========================
+   TOP NAV (HAMBURGER ONLY)
+   ========================= */
+/* Height:0 prevents header from blocking clicks on page */
 .top-nav{
   position: fixed;
   top: 0;
@@ -109,7 +121,7 @@ button:focus-visible{
   pointer-events: auto;
 }
 
-/* ===== HAMBURGER BUTTON ===== */
+/* Hamburger button */
 .menu-toggle{
   position: fixed;
   top: 1rem;
@@ -137,7 +149,7 @@ button:focus-visible{
   background: rgba(255, 255, 255, 0.90);
 }
 
-/* subtle “gold sweep” on hover */
+/* Gold sweep on hover */
 .menu-toggle:hover .bar:nth-of-type(1){ animation: gold-pulse 2s linear infinite; }
 .menu-toggle:hover .bar:nth-of-type(2){ animation: gold-pulse 2s linear infinite 0.35s; }
 .menu-toggle:hover .bar:nth-of-type(3){ animation: gold-pulse 2s linear infinite 0.7s; }
@@ -148,7 +160,7 @@ button:focus-visible{
   75%, 100%{ background: rgba(255, 255, 255, 0.90); }
 }
 
-/* ===== SLIDE-OUT PANEL ===== */
+/* Slide-out panel */
 .menu-panel{
   position: fixed;
   top: 0;
@@ -180,20 +192,15 @@ button:focus-visible{
 
 .menu-panel a:hover{ color: var(--rc-accent); }
 
-/* CTA last item (Start Checkup) — ONE CLEAN BLOCK (no duplicates) */
+/* CTA last link (Start Checkup) */
 .menu-panel a:last-child{
   margin-top: 0.75rem;
   padding: 0.75rem 0.9rem;
   border-radius: 999px;
-
-  /* override standard link divider */
   border-bottom: none;
-
   border: 1px solid rgba(250, 204, 21, 0.35);
   background: rgba(250, 204, 21, 0.10);
   text-align: center;
-
-  /* lock CTA text color so it stays clean */
   color: rgba(255,255,255,0.92);
 }
 
@@ -203,7 +210,7 @@ button:focus-visible{
   color: #fde047;
 }
 
-/* ===== BACKDROP OVERLAY ===== */
+/* Backdrop overlay */
 .menu-backdrop{
   position: fixed;
   inset: 0;
@@ -219,10 +226,12 @@ button:focus-visible{
   pointer-events: auto;
 }
 
-/* Lock body scroll when menu opens (JS adds body.menu-open) */
+/* Lock body scroll when menu opens */
 body.menu-open{ overflow: hidden; }
 
-/* ===== HERO ===== */
+/* =========================
+   HERO
+   ========================= */
 .hero{
   padding: 96px 40px 78px;
   max-width: var(--rc-max);
@@ -274,7 +283,7 @@ body.menu-open{ overflow: hidden; }
   text-shadow: 0 6px 16px rgba(0, 0, 0, 0.60);
 }
 
-/* main CTA button */
+/* CTA buttons */
 .cta-btn{
   display: inline-flex;
   align-items: center;
@@ -298,7 +307,8 @@ body.menu-open{ overflow: hidden; }
   filter: brightness(1.03);
   box-shadow: 0 18px 60px rgba(250, 204, 21, 0.32);
 }
-/* Second CTA button (Phone Interview) */
+
+/* Secondary CTA */
 .cta-secondary{
   margin-left: 12px;
   background: transparent;
@@ -312,28 +322,27 @@ body.menu-open{ overflow: hidden; }
   transform: translateY(-1px);
 }
 
-/* hero responsiveness */
+/* Hero responsive */
 @media (max-width: 720px){
   .hero{ padding: 72px 20px 58px; }
   .hero h1{ font-size: 34px; }
   .cta-secondary{
-  margin-left: 0;
-  margin-top: 12px;
+    margin-left: 0;
+    margin-top: 12px;
+  }
 }
 
-}
-
-/* ===== SECTIONS ===== */
+/* =========================
+   SECTIONS
+   ========================= */
 .section{
   max-width: var(--rc-max);
   margin: 0 auto;
   padding: 3rem 1.5rem 4rem;
 }
 
-/* Prevent the first section after the hero from sitting on the hero overlay edge */
-#who{
-  position: relative;
-}
+/* Prevent first section after hero from sitting on overlay edge */
+#who{ position: relative; }
 
 #who::before{
   content:"";
@@ -344,7 +353,6 @@ body.menu-open{ overflow: hidden; }
   pointer-events: none;
   z-index: -1;
 }
-
 
 .section h2{
   font-size: 1.9rem;
@@ -361,7 +369,9 @@ body.menu-open{ overflow: hidden; }
   margin: 0;
 }
 
-/* ===== SHARED CARD STYLES ===== */
+/* =========================
+   SHARED CARD STYLES
+   ========================= */
 .card,
 .why-card,
 .resource-card,
@@ -371,15 +381,9 @@ body.menu-open{ overflow: hidden; }
   border-radius: var(--rc-radius);
   box-shadow: var(--rc-shadow);
   backdrop-filter: blur(10px);
-}
-
-/* subtle hover lift (premium feel) */
-.card,
-.why-card,
-.resource-card,
-.contact-card{
   transition: transform 0.18s ease, border-color 0.18s ease;
 }
+
 .card:hover,
 .why-card:hover,
 .resource-card:hover,
@@ -388,7 +392,7 @@ body.menu-open{ overflow: hidden; }
   border-color: rgba(58,160,255,0.35);
 }
 
-/* ===== CARD GRID ===== */
+/* Card grid */
 .card-grid{
   margin-top: 2rem;
   display: grid;
@@ -396,9 +400,7 @@ body.menu-open{ overflow: hidden; }
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-.card{
-  padding: 1.5rem 1.4rem;
-}
+.card{ padding: 1.5rem 1.4rem; }
 
 .card h3{
   font-size: 1.1rem;
@@ -421,7 +423,7 @@ body.menu-open{ overflow: hidden; }
 
 .card li + li{ margin-top: 0.25rem; }
 
-/* ===== WHY GRID ===== */
+/* Why grid */
 .why-grid{
   margin-top: 2rem;
   display: grid;
@@ -429,9 +431,7 @@ body.menu-open{ overflow: hidden; }
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
-.why-card{
-  padding: 1.5rem 1.4rem;
-}
+.why-card{ padding: 1.5rem 1.4rem; }
 
 .why-card h3{
   font-size: 1.1rem;
@@ -445,7 +445,7 @@ body.menu-open{ overflow: hidden; }
   margin: 0;
 }
 
-/* ===== RESOURCES ===== */
+/* Resources */
 .resource-grid{
   margin-top: 2rem;
   display: grid;
@@ -453,9 +453,7 @@ body.menu-open{ overflow: hidden; }
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
-.resource-card{
-  padding: 1.5rem 1.4rem;
-}
+.resource-card{ padding: 1.5rem 1.4rem; }
 
 .resource-tag{
   display: inline-block;
@@ -491,7 +489,9 @@ body.menu-open{ overflow: hidden; }
 
 .resource-card li + li{ margin-top: 0.25rem; }
 
-/* ===== CONTACT ===== */
+/* =========================
+   CONTACT
+   ========================= */
 .contact-layout{
   margin-top: 2rem;
   display: grid;
@@ -568,12 +568,13 @@ body.menu-open{ overflow: hidden; }
   line-height: 1.6;
 }
 
-/* responsive contact */
 @media (max-width: 800px){
   .contact-layout{ grid-template-columns: 1fr; }
 }
 
-/* ===== FLOATING HOME LOGO (TOP-LEFT) ===== */
+/* =========================
+   FLOATING HOME LOGO (TOP-LEFT)
+   ========================= */
 .home-logo-float{
   position: fixed;
   left: 1.5rem;
@@ -608,7 +609,7 @@ body.menu-open{ overflow: hidden; }
   100%{ transform: rotateY(360deg) rotateX(0deg); }
 }
 
-/* ===== FOOTER ===== */
+/* Footer */
 .site-footer{
   margin-top: 3rem;
   padding: 1.8rem 0 2.6rem;
@@ -627,17 +628,21 @@ body.menu-open{ overflow: hidden; }
   opacity: 0.85;
 }
 
-/* ===== FORMS (client questionnaire) ===== */
+/* =========================
+   FORMS / UTILITY PAGE LAYOUT
+   (.page used by forms + service pages)
+   ========================= */
 .page{
   max-width: var(--rc-max);
   margin: 0 auto;
-  padding: 96px 1.5rem 4rem;
+  padding: 96px 1.5rem 4rem; /* clears the fixed logo + hamburger */
 }
 
 .container{
   max-width: 760px;
 }
 
+/* Forms */
 .form{
   margin-top: 1.25rem;
   display: grid;
@@ -689,10 +694,10 @@ body.menu-open{ overflow: hidden; }
 }
 .btn:hover{ transform: translateY(-1px); }
 
-/* spacing helpers */
+/* Spacing helper */
 .mt-lg { margin-top: 1.4rem; }
 
-/* ===== MOBILE POLISH ===== */
+/* Mobile polish */
 @media (max-width: 480px){
   .home-logo-float{
     width: 58px;
@@ -707,7 +712,185 @@ body.menu-open{ overflow: hidden; }
   }
 }
 
-/* ===== REDUCED MOTION SUPPORT ===== */
+/* =========================
+   SERVICE / UTILITY PAGE ADD-ONS
+   Scoped to .page so it never leaks site-wide
+   ========================= */
+.page .page-title{
+  margin: 0 0 0.8rem;
+  font-size: 2.1rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 12px 40px rgba(0,0,0,0.55);
+}
+
+.page .kicker{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(234,240,255,0.82);
+  margin-bottom: 10px;
+}
+
+.page .meta-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 22px;
+}
+
+.page .meta-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(170,190,255,0.18);
+  background: rgba(58,160,255,0.10);
+  color: rgba(234,240,255,0.88);
+  font-size: 0.9rem;
+}
+
+.page .meta-pill strong{ color: #fde047; }
+
+.page .split{
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: start;
+}
+
+@media (max-width: 900px){
+  .page .split{ grid-template-columns: 1fr; }
+}
+
+.page .pricing-grid{
+  margin-top: 1.3rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.page .package{
+  padding: 1.4rem 1.3rem 1.6rem;
+}
+
+.page .package h3{
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.page .package .price{
+  font-size: 1.7rem;
+  font-weight: 950;
+  color: #fde047;
+  margin: 0 0 0.7rem;
+}
+
+.page .package .price span{
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: rgba(234,240,255,0.72);
+}
+
+.page .package p{
+  margin: 0 0 0.8rem;
+  color: rgba(234,240,255,0.82);
+  line-height: 1.65;
+}
+
+.page .package ul{
+  margin: 0;
+  padding-left: 1.1rem;
+  color: rgba(234,240,255,0.74);
+  font-size: 0.92rem;
+}
+
+.page .package li + li{ margin-top: 0.25rem; }
+
+.page .package .cta-btn{
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.page .note-box{
+  margin-top: 1.2rem;
+  padding: 1.1rem 1.1rem;
+  border-radius: var(--rc-radius);
+  border: 1px solid rgba(170,190,255,0.18);
+  background: rgba(18, 24, 56, 0.45);
+  color: rgba(234,240,255,0.78);
+  line-height: 1.65;
+}
+
+/* FAQ accordion */
+.page .faq{
+  margin-top: 1.4rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.page .faq details{
+  background: var(--rc-surface);
+  border: 1px solid var(--rc-border);
+  border-radius: var(--rc-radius);
+  box-shadow: var(--rc-shadow);
+  backdrop-filter: blur(10px);
+  padding: 0.9rem 1rem;
+}
+
+.page .faq summary{
+  cursor: pointer;
+  font-weight: 900;
+  color: rgba(234,240,255,0.92);
+  list-style: none;
+}
+
+.page .faq summary::-webkit-details-marker{ display: none; }
+
+.page .faq summary::after{
+  content: "＋";
+  float: right;
+  color: rgba(250, 204, 21, 0.9);
+  font-weight: 900;
+}
+
+.page .faq details[open] summary::after{ content: "—"; }
+
+.page .faq .answer{
+  margin-top: 0.65rem;
+  color: rgba(234,240,255,0.78);
+  line-height: 1.7;
+}
+
+/* Small helpers */
+.page .muted{ color: var(--rc-muted); }
+.page .small{ font-size: 0.88rem; }
+
+/* =========================
+   ACCESSIBILITY: SKIP LINK
+   (global is fine)
+   ========================= */
+.skip-link{
+  position: absolute;
+  left: -999px;
+  top: 10px;
+  padding: 10px 14px;
+  background: rgba(250,204,21,0.95);
+  color: #111827;
+  border-radius: 12px;
+  font-weight: 900;
+  z-index: 2000;
+}
+.skip-link:focus{ left: 12px; }
+
+/* =========================
+   REDUCED MOTION SUPPORT
+   ========================= */
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior: auto; }
 
